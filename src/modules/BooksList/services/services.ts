@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-class BooksServices {
+class BooksApiServices {
     private baseURL = 'https://www.googleapis.com/books/v1/volumes';
     private key = 'AIzaSyBR0GunejdY8otK34lgCjRgwFhApDpjMk4'
 
-    async fetchBooks(param:string) {
-        return await axios.get(`${this.baseURL}?q=${param}&${this.key}`)
+    async fetchBooks(title:string) {
+        return await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}&maxResults=30&projection=lite&key=AIzaSyBR0GunejdY8otK34lgCjRgwFhApDpjMk4`)
     }
 
 }
 
-export default new BooksServices()
+export default new BooksApiServices()

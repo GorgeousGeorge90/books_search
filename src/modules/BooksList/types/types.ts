@@ -1,6 +1,6 @@
 
 
-type ResponseItemInfo = {
+export type ResponseItemInfo = {
     kind:string,
     id:string,
     etag:string,
@@ -12,6 +12,7 @@ type ResponseItemInfo = {
         publisher?:string,
         publishedDate?:string,
         description?:string,
+        categories?:string[],
         readingModes: {
             text:boolean,
             image:boolean,
@@ -54,6 +55,18 @@ type ResponseItemInfo = {
 export type ResponseType = {
     kind: string,
     totalItems: number,
-    items: ResponseItemInfo[],
+    items: BooksItemType[],
+}
+
+export type BooksItemType = {
+    id:string,
+    title:string,
+    authors?:string[],
+    description?:string,
+    imageLinks: {
+        smallThumbnail:string,
+        thumbnail:string,
+    },
+    categories?:string[],
 }
 
