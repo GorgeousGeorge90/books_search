@@ -1,0 +1,9 @@
+
+
+.book_container {
+  @apply flex items-center justify-center bg-neutral-300;
+
+  .book_content {
+    @apply flex items-center justify-center;
+  }
+}

@@ -1,0 +1,10 @@
+
+
+.app_wrapper {
+  @apply flex flex-col;
+  height: 100vh;
+
+  .app_main {
+    @apply flex-grow bg-neutral-100;
+  }
+}

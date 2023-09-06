@@ -1,0 +1,17 @@
+
+
+.search_container {
+  @apply flex items-center justify-center;
+
+  .search_content {
+    @apply flex items-center justify-center relative;
+
+    .search_input {
+      @apply p-1;
+    }
+
+    .search_btn {
+      @apply absolute flex right-2 scale-150;
+    }
+  }
+}
