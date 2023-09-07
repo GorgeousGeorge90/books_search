@@ -1,72 +1,30 @@
 
 
-export type ResponseItemInfo = {
-    kind:string,
-    id:string,
-    etag:string,
-    selfLink:string,
+export type BooksItemType = {
+    id: string,
     volumeInfo: {
-        title:string,
-        subtitle?:string,
-        authors?:string[],
-        publisher?:string,
-        publishedDate?:string,
-        description?:string,
-        categories?:string[],
-        readingModes: {
-            text:boolean,
-            image:boolean,
+        title: string,
+        authors?: string[],
+        description?: string,
+        categories?: string[],
+        imageLinks?: {
+            thumbnail?:string,
+            small?:string,
+            medium?:string,
+            large?:string,
         },
-        maturityRating:string,
-        allowAnonLogging:boolean,
-        contentVersion:string,
-        panelizationSummary: {
-            containsEpubBubbles:boolean,
-            containsImageBubbles:boolean,
-        },
-        imageLinks: {
-            smallThumbnail:string,
-            thumbnail:string,
-        },
-        previewLink:string,
-        infoLink:string,
-        canonicalVolumeLink:string,
-    },
-    saleInfo: {
-        country:string,
-    },
-    accessInfo: {
-        country:string,
-        epub: {
-            isAvailable:boolean,
-        },
-        pdf: {
-            isAvailable:boolean,
-            acsTokenLink:string,
-        },
-        accessViewStatus:string,
-    },
-    searchInfo: {
-        textSnippet:string,
     }
 }
 
-
 export type ResponseType = {
-    kind: string,
     totalItems: number,
     items: BooksItemType[],
 }
 
-export type BooksItemType = {
-    id:string,
+export type RequestType = {
     title:string,
-    authors?:string[],
-    description?:string,
-    imageLinks: {
-        smallThumbnail:string,
-        thumbnail:string,
-    },
-    categories?:string[],
+    orderBy:string,
+    startIndex?:number,
 }
+
 

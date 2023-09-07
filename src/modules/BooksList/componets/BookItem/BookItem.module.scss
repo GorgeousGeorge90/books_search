@@ -1,9 +1,13 @@
 
 
 .book_container {
-  @apply flex items-center justify-center bg-neutral-300;
+  @apply flex items-center justify-center bg-neutral-300 flex-grow;
 
   .book_content {
-    @apply flex items-center justify-center;
+    @apply flex flex-col items-center justify-center p-4;
+
+    .book_content_title {
+      @apply text-xs font-bold flex items-center;
+    }
   }
 }

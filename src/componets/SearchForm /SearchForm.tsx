@@ -1,6 +1,10 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ReactComponent as Search } from './../../assets/img/search.svg';
 import styles from './SearchFrom.module.scss';
+import { useAppDispatch } from '../../store/hooks';
+import { fetchBooksThunk}  from '../../modules/BooksList/store/booksSlice';
+import {useOptionsHook} from "../../context/OptionSearchWrapper";
+
 
 
 type FormProps = {
@@ -8,10 +12,15 @@ type FormProps = {
 }
 
 const SearchForm = () => {
+    const dispatch = useAppDispatch()
+    const options = useOptionsHook()
     const { register, reset, handleSubmit, formState:{errors}} = useForm<FormProps>()
     const handleClick:SubmitHandler<FormProps> = data => {
-        console.log(data)
-        reset()
+        options?.setTitle(data.title)
+        if (options) {
+            dispatch(fetchBooksThunk(options.options))
+            reset()
+        }
     }
 
     return (<section className={styles.search_container}>

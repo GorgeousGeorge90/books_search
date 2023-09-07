@@ -1,5 +1,18 @@
 
 
 .books_list_container {
-  @apply flex items-center justify-center;
+  @apply flex items-center justify-center px-10 py-5;
+
+  .books_list_content {
+    @apply flex flex-col items-center gap-6;
+
+    .books_list_list {
+      @apply grid grid-cols-4 gap-10;
+
+      .books_list_list_item {
+        @apply flex;
+      }
+    }
+  }
+
 }

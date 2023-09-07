@@ -1,31 +1,30 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import BooksServices from './../services/services';
-import BooksLocalService from './../services/local_services';
-import {BooksItemType, ResponseType} from '../types/types';
-
+import { BooksItemType, ResponseType } from '../types/types';
+import { OptionsType } from "../../../context/OptionSearchWrapper";
 
 
 export const fetchBooksThunk = createAsyncThunk<
     ResponseType,
-    undefined,
+    OptionsType,
     {
         rejectValue:string,
     }
     >(
     '@fetchBooksThunk/books',
-    async (_,{rejectWithValue})=> {
-            const response = await BooksServices.fetchBooks('react')
+    async (payload,{rejectWithValue})=> {
+            const {title, startIndex} = payload
+            const response = await BooksServices.fetchBooks(title,startIndex)
             if (response.status === 200) {
-                const {data} = response
-                data.items = BooksLocalService.toLocalType(data.items)
-                return data as ResponseType
+                return response.data as ResponseType
             } else {
                 return rejectWithValue(response.statusText)
         }
     })
 
-type initialType = {
+export type initialType = {
     books:BooksItemType[],
+    current:BooksItemType | null,
     total:null | number,
     status:'idle' | 'pending' | 'fulfilled' | 'rejected',
     error:string | null,
@@ -33,6 +32,7 @@ type initialType = {
 
 const initialState:initialType = {
     books:[],
+    current:null,
     total:null,
     status:'idle',
     error:null,
@@ -41,7 +41,14 @@ const initialState:initialType = {
 const booksSlice = createSlice({
     name: '@books',
     initialState,
-    reducers:{},
+    reducers:{
+        setCurrent:(state,action:PayloadAction<BooksItemType>) => {
+            state.current = action.payload
+        },
+        clearCurrent:(state) => {
+            state.current = null
+        }
+    },
     extraReducers:builder => {
         builder
             .addCase(fetchBooksThunk.pending, (state)=> {
@@ -51,7 +58,9 @@ const booksSlice = createSlice({
             .addCase(fetchBooksThunk.fulfilled, (state,action)=> {
                 const { items,totalItems } = action.payload
                 state.books.push(...items)
-                state.total = totalItems
+                if (!state.total) {
+                    state.total = totalItems
+                }
                 state.status = 'fulfilled'
             })
 
@@ -64,4 +73,6 @@ const booksSlice = createSlice({
     }
 })
 
+
+export const { setCurrent,clearCurrent } = booksSlice.actions
 export default booksSlice.reducer

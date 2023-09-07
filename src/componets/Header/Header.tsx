@@ -9,6 +9,9 @@ const Header = () => {
         <header className={styles.header_content}>
             <h1 className={styles.header_content_title}>search for books</h1>
             <SearchForm/>
+            <section>
+
+            </section>
         </header>
     </section>)
 }
