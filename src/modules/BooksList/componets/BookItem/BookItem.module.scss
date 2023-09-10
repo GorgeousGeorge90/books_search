@@ -1,13 +1,33 @@
 
 
 .book_container {
-  @apply flex items-center justify-center bg-neutral-300 flex-grow;
+  @apply base-container bg-neutral-500 flex-grow rounded-xl;
+  max-width: 250px;
 
   .book_content {
-    @apply flex flex-col items-center justify-center p-4;
+    @apply  flex flex-col gap-2 p-4 text-xs items-start;
+
+    .book_content_logo {
+      @apply self-center base-container rounded-xl shadow-md shadow-neutral-200;
+      //width: 200px;
+      //height: 300px;
+      //object-fit: cover;
+    }
 
     .book_content_title {
-      @apply text-xs font-bold flex items-center;
+      @apply text-sm font-bold flex text-neutral-200 ;
+    }
+
+    .book_content_category {
+      @apply underline text-neutral-300 text-sm;
+    }
+
+    .book_content_list {
+      @apply flex;
+    }
+
+    .book_content_list_authors {
+      @apply text-neutral-300 text-sm;
     }
   }
 }

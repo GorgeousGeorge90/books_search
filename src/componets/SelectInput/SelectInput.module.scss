@@ -1,0 +1,21 @@
+
+
+.select_container {
+  @apply base-container;
+
+  .select_content {
+    @apply base-container gap-2;
+
+    .select_content_title {
+      @apply first-letter:uppercase text-neutral-100 font-semibold stroke-slate-100;
+    }
+
+    .select_content_input {
+      @apply p-1 rounded-md;
+
+      &:hover {
+        @apply cursor-pointer bg-neutral-100;
+      }
+    }
+  }
+}

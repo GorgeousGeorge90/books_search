@@ -1,15 +1,19 @@
 
 
 .header_container {
-  @apply flex items-center justify-center font-serif bg-cover;
+  @apply base-container font-serif bg-cover;
   height: 250px;
-  background: url('https://images.unsplash.com/photo-1519163219899-21d2bb723b3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+  background: url('https://images.unsplash.com/photo-1629197680187-d75229c25190?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2831&q=80');
 
   .header_content {
-    @apply flex flex-col items-center justify-center gap-10 flex-grow p-10;
+    @apply base-container flex-col gap-4 flex-grow p-10 sm:gap-8;
 
     .header_content_title {
-      @apply first-letter:uppercase text-neutral-100 text-3xl;
+      @apply first-letter:uppercase text-neutral-50 text-3xl text-center md:text-4xl tracking-wide font-semibold;
+    }
+
+    .header_content_sort {
+      @apply flex flex-col sm:flex-row justify-center gap-5 md:justify-evenly w-full;
     }
   }
 }

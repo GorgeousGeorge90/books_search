@@ -13,8 +13,8 @@ export const fetchBooksThunk = createAsyncThunk<
     >(
     '@fetchBooksThunk/books',
     async (payload,{rejectWithValue})=> {
-            const {title, startIndex} = payload
-            const response = await BooksServices.fetchBooks(title,startIndex)
+            const {title, startIndex, category, order} = payload
+            const response = await BooksServices.fetchBooks({title,startIndex,category,order})
             if (response.status === 200) {
                 return response.data as ResponseType
             } else {
@@ -47,7 +47,18 @@ const booksSlice = createSlice({
         },
         clearCurrent:(state) => {
             state.current = null
-        }
+        },
+        clearState:(state) => {
+            for (let key in state) {
+                if (key === 'books') {
+                    state[key] = []
+                } else if (key === 'current') {
+                    state[key] = null
+                } else if (key === 'total') {
+                    state[key] = null
+                }
+            }
+        },
     },
     extraReducers:builder => {
         builder
@@ -74,5 +85,5 @@ const booksSlice = createSlice({
 })
 
 
-export const { setCurrent,clearCurrent } = booksSlice.actions
+export const { setCurrent,clearState,clearCurrent } = booksSlice.actions
 export default booksSlice.reducer

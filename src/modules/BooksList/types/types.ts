@@ -6,7 +6,7 @@ export type BooksItemType = {
         title: string,
         authors?: string[],
         description?: string,
-        categories?: string[],
+        categories: string[],
         imageLinks?: {
             thumbnail?:string,
             small?:string,
@@ -21,10 +21,5 @@ export type ResponseType = {
     items: BooksItemType[],
 }
 
-export type RequestType = {
-    title:string,
-    orderBy:string,
-    startIndex?:number,
-}
 
 

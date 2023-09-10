@@ -1,17 +1,21 @@
 
 
 .search_container {
-  @apply flex items-center justify-center;
+  @apply base-container;
 
   .search_content {
-    @apply flex items-center justify-center relative;
+    @apply base-container;
 
-    .search_input {
-      @apply p-1;
+    .search_content_input {
+      @apply p-1 rounded-l outline-none text-neutral-700 focus:bg-neutral-100;
     }
 
-    .search_btn {
-      @apply absolute flex right-2 scale-150;
+    .search_content_btn {
+      @apply bg-neutral-500 p-2 rounded-r;
+
+      &:hover {
+        @apply bg-violet-500;
+      }
     }
   }
 }
