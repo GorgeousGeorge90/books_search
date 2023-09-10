@@ -9,11 +9,11 @@ const BookItem:FC<BooksItemType> = ({...props}) => {
     const { title, authors, imageLinks, categories} = props.volumeInfo
 
     return (<div className={styles.book_container}>
-        <div className={styles.book_content}>
-            <img className={styles.book_content_logo}
-                 src={imageLinks ? imageLinks.thumbnail:''}
-                 alt='pic'/>
-            <>
+            <div className={styles.book_content}>
+                <img className={styles.book_content_logo}
+                     src={imageLinks ? imageLinks.thumbnail:''}
+                     alt='pic'/>
+                <>
             {
                 categories ?  <p className={styles.book_content_category}>{categories[0]}</p>:null
             }
