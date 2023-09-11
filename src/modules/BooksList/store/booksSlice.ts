@@ -42,8 +42,11 @@ const booksSlice = createSlice({
     name: '@books',
     initialState,
     reducers:{
-        setCurrent:(state,action:PayloadAction<BooksItemType>) => {
-            state.current = action.payload
+        setCurrent:(state,action:PayloadAction<BooksItemType['id']>) => {
+            const current = state.books.find(book => book.id === action.payload)
+            if (current) {
+                state.current = current
+            }
         },
         clearCurrent:(state) => {
             state.current = null

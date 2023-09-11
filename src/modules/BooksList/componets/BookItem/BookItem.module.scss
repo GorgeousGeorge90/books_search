@@ -1,8 +1,12 @@
 
 
 .book_container {
-  @apply base-container bg-neutral-500 flex-grow rounded-xl;
+  @apply base-container items-start bg-neutral-500 flex-grow rounded-xl cursor-pointer transition-all;
   max-width: 250px;
+
+  &:hover {
+    @apply scale-110 bg-neutral-700;
+  }
 
   .book_content {
     @apply  flex flex-col gap-2 p-4 text-xs text-center;
@@ -12,9 +16,7 @@
     }
 
     .book_content_title {
-      @apply text-sm font-bold flex text-neutral-200 self-center;
-      max-height: 50px;
-      overflow: hidden;
+      @apply flex text-sm font-bold flex text-neutral-200 self-center;
     }
 
     .book_content_category {
@@ -26,7 +28,8 @@
     }
 
     .book_content_list_authors {
-      @apply text-neutral-300 text-sm;
+      @apply flex text-neutral-300 text-sm;
+      max-height: 40px;
     }
   }
 }

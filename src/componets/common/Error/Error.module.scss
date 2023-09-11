@@ -1,0 +1,9 @@
+
+
+.error_container {
+  @apply base-container bg-red-700 z-10 rounded-md absolute top-60 animate-open transition-all;
+
+  .error_content {
+    @apply text-neutral-100 text-xl p-5;
+  }
+}

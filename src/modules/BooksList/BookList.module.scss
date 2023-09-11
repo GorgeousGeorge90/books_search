@@ -1,17 +1,22 @@
 
 
 .books_list_container {
-  @apply base-container px-16 py-5;
+  @apply base-container px-16 py-5 animate-open transition-all;
 
   .books_list_content {
     @apply base-container flex-col gap-12;
+
 
     .books_list_title {
       @apply font-semibold first-letter:uppercase text-neutral-50;
     }
 
     .books_list_btn {
-      @apply bg-neutral-400 text-neutral-50 p-2 rounded-md first-letter:uppercase hover:bg-violet-500;
+      @apply bg-neutral-400 text-neutral-50 p-2 rounded-md first-letter:uppercase;
+
+      &:hover {
+        @apply bg-violet-500
+      }
     }
 
     .books_list_list {

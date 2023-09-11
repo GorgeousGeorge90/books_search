@@ -8,8 +8,12 @@ const initialState:initialType = {
         volumeInfo: {
             title:'Man',
             categories:['art']
-        }
-    }],
+        },
+
+    },{id:'1', volumeInfo: {
+            title:'Batman',
+            categories:['art']
+        }}],
     current:{
         id:'wrerw',
         volumeInfo: {
@@ -30,15 +34,10 @@ describe('reducer tests',()=> {
         expect(result).toEqual(initialState)
     })
 
-    it('goal:to set current with title - Batman', ()=> {
+    it('goal:to set current with id - 1', ()=> {
         const action = {
             type: setCurrent.type,
-            payload: {
-                id: 'asde',
-                volumeInfo: {
-                    title: 'Batman'
-                }
-            }
+            payload: '1'
         }
 
         const result = booksReducer(initialState,action)
@@ -82,7 +81,7 @@ describe('reducer tests',()=> {
         }
         const result = booksReducer(initialState,action)
         expect(result.status).toBe('fulfilled')
-        expect(result.books).toHaveLength(2)
+        expect(result.books).toHaveLength(3)
 
     })
 

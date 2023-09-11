@@ -1,4 +1,4 @@
-import { getBooks, getTotal, getCurrent, getStatus } from '../selectors/selectors';
+import {getBooks, getTotal, getCurrent, getStatus, getError} from '../selectors/selectors';
 import { RootState } from "../../../store/store";
 
 
@@ -20,7 +20,7 @@ const initialState:RootState = {
         },
         total: 430,
         status: 'idle',
-        error: null,
+        error: 'Error!',
     }
 }
 
@@ -45,5 +45,10 @@ describe('selectors tests', ()=> {
     it('goal:get status with idle value',() => {
         const result = getStatus(initialState)
         expect(result).toBe('idle')
+    })
+
+    it('goal:get error with Error! value', () => {
+        const result = getError(initialState)
+        expect(result).toBe('Error!')
     })
 })

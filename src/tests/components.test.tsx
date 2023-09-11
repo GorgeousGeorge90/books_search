@@ -4,6 +4,7 @@ import { OptionContext } from "../context/OptionSearchWrapper";
 
 
 
+jest.mock('react-redux')
 describe('Header',()=> {
     it('goal:render Header component',()=> {
 

@@ -1,8 +1,11 @@
 import BookItem from '../componets/BookItem/BookItem';
+import CurrentBooksItem from '../componets/CurrentBookItem/CurrentBooksItem';
 import BookList from '../BookList';
 import { render } from '@testing-library/react';
 import {BooksItemType, ResponseType} from "../types/types";
 import * as reduxHooks from 'react-redux';
+import {initialType} from "../store/booksSlice";
+import {OptionsType, useOptionsHook} from "../../../context/OptionSearchWrapper";
 
 
 
@@ -29,24 +32,26 @@ describe('components tests',()=> {
         expect(view).toMatchSnapshot()
     })
 
-    it('goal:render BooksList component', ()=> {
-        const data= {
-            total:1,
-            books:[{id:'dasd',volumeInfo: {
-            title:'Ironman',
-                authors:['Stan Lee'],
-                imageLinks:{
-                thumbnail:'asdasd'
-            },
-            categories:['art']
-        }}],
+    it('goal:render CurrentBookItem', ()=> {
+
+        const data:BooksItemType = {
+            id:'er',
+            volumeInfo: {
+                title: 'Batman',
+                authors: ['Lee'],
+                description: 'Nice',
+                categories: ['art'],
+                imageLinks: {
+                    thumbnail: 'pic'
+                }
+            }
         }
 
         const dispatch = jest.fn()
         mockedDispatch.mockReturnValue(dispatch)
         mockedSelector.mockReturnValue(data)
 
-        const view = render(<BookList/>)
+        const view = render(<CurrentBooksItem/>)
         expect(view).toMatchSnapshot()
     })
 })

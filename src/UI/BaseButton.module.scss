@@ -1,0 +1,9 @@
+
+
+.base_button {
+    @apply bg-neutral-400 text-neutral-50 p-2 rounded-md first-letter:uppercase transition-all;
+
+    &:hover {
+      @apply bg-violet-500 animate-pulse;
+    }
+}

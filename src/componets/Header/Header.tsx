@@ -2,7 +2,7 @@ import styles from './Header.module.scss';
 import SearchForm from '../SearchForm /SearchForm';
 import SelectInput from '../SelectInput/SelectInput';
 import { useOptionsHook } from '../../context/OptionSearchWrapper';
-import {useEffect} from "react";
+
 
 
 const Header = () => {
@@ -19,9 +19,7 @@ const Header = () => {
     return (<section className={styles.header_container}>
         <header className={styles.header_content}>
             <h1 className={styles.header_content_title}>search for books</h1>
-            <section className={'hover:grayscale-0'}>
-                <SearchForm/>
-            </section>
+            <SearchForm/>
             <section className={styles.header_content_sort}>
                 <SelectInput label={'categories'}
                              options={categories}

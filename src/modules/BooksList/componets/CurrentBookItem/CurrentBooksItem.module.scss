@@ -1,5 +1,38 @@
 
 
 .current_container {
-  @apply flex items-center justify-center;
+  @apply base-container animate-show_it transition-all;
+
+  .current_content {
+    @apply grid gap-2 md:grid-cols-2 px-24 py-8 italic;
+    justify-content: center;
+
+    .current_aside {
+      @apply flex flex-col justify-self-center gap-2;
+
+      .current_aside_pic {
+        @apply w-72 h-80 object-cover rounded-lg border-neutral-500 border;
+      }
+
+      .current_aside_makers {
+        @apply text-neutral-200 text-lg text-center font-semibold;
+      }
+    }
+
+    .current_info {
+      @apply flex items-center flex-col gap-3;
+
+      .current_info_title {
+        @apply  sm:text-xl md:text-2xl font-bold text-neutral-200;
+      }
+
+      .current_info_category {
+        @apply text-lg text-neutral-300 underline;
+      }
+
+      .current_info_text {
+        @apply text-sm md:text-lg text-neutral-300;
+      }
+    }
+  }
 }

@@ -13,7 +13,6 @@ const SelectInput:FC<SelectType> = ({label,options,value,setValue}) => {
     const handleChange = (e:ChangeEvent<HTMLSelectElement>):void => {
         setValue(e.currentTarget.value)
     }
-    console.log(value)
 
     return (<section className={styles.select_container}>
         <div className={styles.select_content}>

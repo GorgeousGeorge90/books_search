@@ -1,18 +1,20 @@
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import { getBooks, getTotal } from './selectors/selectors';
+import {getFull} from './selectors/selectors';
 import BookItem from './componets/BookItem/BookItem';
 import styles from './BookList.module.scss';
 import { fetchBooksThunk } from './store/booksSlice';
-import {OptionsType, useOptionsHook} from '../../context/OptionSearchWrapper';
-import {useEffect, useState} from 'react';
+import { useOptionsHook } from '../../context/OptionSearchWrapper';
+import { useEffect } from 'react';
+import CurrentBooksItem from "./componets/CurrentBookItem/CurrentBooksItem";
+import {ReactComponent as Spinner} from './../../assets/img/spinner.svg';
+import BaseButton from '../../UI/BaseButton';
 
 
 
 const BookList = () => {
     const dispatch = useAppDispatch()
     const search = useOptionsHook()
-    const books = useAppSelector(getBooks)
-    const total = useAppSelector(getTotal)
+    const { books, total, current, status, error } = useAppSelector(getFull)
 
     useEffect(()=> {
         if (search?.options && books.length !==0 ) {
@@ -20,6 +22,17 @@ const BookList = () => {
         }
     },[search?.options.startIndex])
 
+    useEffect(()=> {
+        console.log(error)
+    },[error])
+
+    if (current) {
+        return <CurrentBooksItem/>
+    }
+
+    if (status === 'pending' && books.length === 0) {
+        return  <Spinner/>
+    }
 
 
     return (<section className={styles.books_list_container}>
@@ -36,9 +49,8 @@ const BookList = () => {
                     }
                 </ul>
                 {
-                    books.length !== 0 ? <button className={styles.books_list_btn}
-                                                 onClick={()=> search?.setStart(books?.length)}
-                    >load more</button>:null
+                    books.length !== 0 ? <BaseButton content={ status === 'pending' ? 'loading...':'load more'}
+                                                      onClick={()=> search?.setStart(books?.length)}/>:null
                 }
             </div> : null
         }
